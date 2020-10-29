@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { getBookById } from "../../api.js";
 import { useParams, useHistory } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import axios from "axios";

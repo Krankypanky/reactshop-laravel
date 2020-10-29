@@ -16,7 +16,7 @@ const Cart = (props) => {
             {props.cart && !props.cart.length && "Aktuell gibt es keine Bücher im Warenkorb."}
             {props.cart.map((cartItem, index) => {
                 totalPrice += cartItem.price;
-                return <li key={cartItem.isbn + index} className="cart-list-item">
+                return <li key={cartItem.id + index} className="cart-list-item">
                     <p>{cartItem.title} - <strong>{cartItem.price} €</strong></p>
                     <button onClick={() => props.removeItemFromCart(index)}>
                         <DeleteSVG/>

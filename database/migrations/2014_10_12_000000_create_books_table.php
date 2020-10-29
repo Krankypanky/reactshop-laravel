@@ -24,7 +24,7 @@ class CreateBooksTable extends Migration
             $table->integer('pages');
             $table->text('description')->nullable();
             $table->text('image')->nullable();
-            $table->string('price')->nullable();
+            $table->integer('price');
             $table->string('website')->nullable();
             $table->timestamps();
         });
