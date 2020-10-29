@@ -2,8 +2,9 @@ import React from "react";
 import Navigation from "./Components/Navigation/Navigation";
 import Loading from "./Components/Loading/Loading";
 import Cart from "./Components/Cart/Cart";
-import { allBooks } from "./api";
 import routes from "./routes";
+import axios from "axios";
+import config from "./config/config.default"
 
 export const AppContext = React.createContext({});
 
@@ -20,8 +21,9 @@ export default class App extends React.Component {
 
     //wird direkt nach dem erstellen (mounten) der Komponente ausgeführt
     componentDidMount() {
-        allBooks()
-            .then((books) => {
+        axios.get(config.API_URL + "/api/books")
+            .then((response) => {
+                const books = response.data;
                 this.setState({ books });
             })
             .catch((e) => console.error(e))
@@ -33,7 +35,7 @@ export default class App extends React.Component {
     }
 
     //wird direkt nach dem zerstören der komponente ausgeführt
-    componentWillUnmount() {}
+    componentWillUnmount() { }
 
     static getDerivedStateFromProps() {
         return {};

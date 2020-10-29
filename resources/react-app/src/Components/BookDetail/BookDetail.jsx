@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { getBookById } from "../../api.js";
 import { useParams, useHistory } from "react-router-dom";
 import Loading from "../Loading/Loading";
+import axios from "axios";
+import config from "./../../config/config.default";
 
 import "./BookDetail.scss";
 
@@ -14,8 +16,9 @@ const BookDetail = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getBookById(params.id)
-            .then((book) => {
+        axios.get(config.API_URL + "/api/book/" + params.id)
+            .then((response) => {
+                const book = response.data;
                 setBook(book);
             })
             .catch((e) => console.error(e))

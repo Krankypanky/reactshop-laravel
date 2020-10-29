@@ -17,9 +17,9 @@ const BookListing = () => {
                     <ul className="book-overview-list">
                         {
                             context.books.map((book, index) =>
-                                <li className="book-overview-list-item" key={book.isbn + index}>
+                                <li className="book-overview-list-item" key={book.id}>
                                     <p>{book.title}</p>
-                                    <Link to={"/details/" + book.isbn}>
+                                    <Link to={"/details/" + book.id}>
                                         <img src={book.image} alt={book.title}/>
                                     </Link>
                                     <button
